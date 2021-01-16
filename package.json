@@ -4,6 +4,9 @@
   "description": "my first project",
   "main": "bin/brain-games.js",
   "type": "module",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
   "scripts": {
     "test": "test"
   },
