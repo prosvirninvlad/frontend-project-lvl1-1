@@ -28,6 +28,8 @@ const playRound = () => {
 };
 
 export default () => {
+  console.log('Welcome to the Brain Games!');
+
   const userName = getName() || 'Incognito';
   let gameWin = true;
 
