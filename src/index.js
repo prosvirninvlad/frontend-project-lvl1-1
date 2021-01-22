@@ -1,11 +1,13 @@
 import readlineSync from 'readline-sync';
+import promptly from 'promptly';
 
-const getName = () => readlineSync.question('May I have your name? ');
+const getName = async () =>
+  await promptly.prompt('May I have your name? ', { default: 'Incognito' });
 
-export default (variants, question, correctAnswers) => {
+export default async (variants, question, correctAnswers) => {
   console.log('Welcome to the Brain Games!');
 
-  const userName = getName() || 'Incognito';
+  const userName = await getName();
 
   console.log(`Hello, ${userName}!`);
 
@@ -13,7 +15,7 @@ export default (variants, question, correctAnswers) => {
     console.log(question);
     console.log(`Question: ${variants[i]}`);
 
-    const answer = readlineSync.question('Your answer: ');
+    const answer = await promptly.prompt('Your answer: ');
 
     if (answer === correctAnswers[i]) {
       console.log('Correct!');
