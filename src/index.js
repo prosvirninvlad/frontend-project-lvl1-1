@@ -12,11 +12,11 @@ export default async (question, generateRound) => {
   const userName = await getName();
 
   console.log(`Hello, ${userName}!`);
+  console.log(question);
 
   for (let i = 0; i < 3; i += 1) {
     const round = generateRound();
 
-    console.log(question);
     console.log(`Question: ${round.question}`);
 
     const answer = await promptly.prompt('Your answer: ');
