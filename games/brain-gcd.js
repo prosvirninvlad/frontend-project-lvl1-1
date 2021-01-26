@@ -15,7 +15,7 @@ const getGreatestCommonDivisor = (firstNum, secondNum) => {
   let greatestCommonDivisor = Math.min(firstNumAbs, secondNumAbs);
 
   for (; greatestCommonDivisor > 0; greatestCommonDivisor -= 1) {
-    if (!(firstNum % greatestCommonDivisor) && !(secondNum % greatestCommonDivisor)) {
+    if (firstNum % greatestCommonDivisor === 0 && secondNum % greatestCommonDivisor === 0) {
       break;
     }
   }
