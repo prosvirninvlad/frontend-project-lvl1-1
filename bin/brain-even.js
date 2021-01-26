@@ -3,17 +3,17 @@
 import _ from 'lodash';
 import playBrainGame from '../src/index.js';
 
+const question = 'Answer "yes" if the number is even, otherwise answer "no".';
+
 const isEven = (num) => !(num % 2);
 
-const question = 'Answer "yes" if the number is even, otherwise answer "no".';
-const variants = [];
-const correctAnswers = [];
+const generateRound = () => {
+  const round = {};
 
-for (let i = 0; i < 3; i += 1) {
-  const number = _.random(100);
+  round.question = _.random(100);
+  round.correctAnswer = isEven(round.question) ? 'yes' : 'no';
 
-  variants.push(number);
-  correctAnswers.push(isEven(number) ? 'yes' : 'no');
-}
+  return round;
+};
 
-playBrainGame(variants, question, correctAnswers);
+playBrainGame(question, generateRound);

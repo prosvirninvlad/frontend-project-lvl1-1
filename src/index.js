@@ -6,7 +6,7 @@ const getName = async () => {
   return userName;
 };
 
-export default async (variants, question, correctAnswers) => {
+export default async (question, generateRound) => {
   console.log('Welcome to the Brain Games!');
 
   const userName = await getName();
@@ -14,15 +14,17 @@ export default async (variants, question, correctAnswers) => {
   console.log(`Hello, ${userName}!`);
 
   for (let i = 0; i < 3; i += 1) {
+    const round = generateRound();
+
     console.log(question);
-    console.log(`Question: ${variants[i]}`);
+    console.log(`Question: ${round.question}`);
 
     const answer = await promptly.prompt('Your answer: ');
 
-    if (answer === correctAnswers[i]) {
+    if (answer === round.correctAnswer) {
       console.log('Correct!');
     } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswers[i]}'.`);
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${round.correctAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
 
       return;
