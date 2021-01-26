@@ -5,3 +5,4 @@
 ![Super-Linter](https://github.com/Dmitriy-Metelya/frontend-project-lvl1/workflows/Super-Linter/badge.svg)
 
 Demo video of brain-even: https://asciinema.org/a/gc1Ve5pbVbfGh5UPSwzNOQaaM
+Demo video of brain-calc: https://asciinema.org/a/fEIxhkbeEPXJmmtKj27qU6cQH

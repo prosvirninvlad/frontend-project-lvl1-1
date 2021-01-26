@@ -1,12 +1,13 @@
 {
   "name": "@hexlet/code",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "description": "my first project",
   "main": "games/brain-games.js",
   "type": "module",
   "bin": {
     "brain-games": "games/brain-games.js",
-    "brain-even": "games/brain-even.js"
+    "brain-even": "games/brain-even.js",
+    "brain-calc": "games/brain-calc.js"
   },
   "scripts": {
     "test": "test"
