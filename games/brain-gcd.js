@@ -6,21 +6,23 @@ import playBrainGame from '../src/index.js';
 const question = 'Find the greatest common divisor of given numbers.';
 
 const getGreatestCommonDivisor = (firstNum, secondNum) => {
+  let result = 1;
+
   if (firstNum === 0 || secondNum === 0) {
-    return 1;
+    return result;
   }
 
   const firstNumAbs = Math.abs(firstNum);
   const secondNumAbs = Math.abs(secondNum);
-  let greatestCommonDivisor = Math.min(firstNumAbs, secondNumAbs);
+  const greatestCommonDivisor = Math.min(firstNumAbs, secondNumAbs);
 
-  for (; greatestCommonDivisor > 0; greatestCommonDivisor -= 1) {
-    if (firstNum % greatestCommonDivisor === 0 && secondNum % greatestCommonDivisor === 0) {
+  for (let i = greatestCommonDivisor; i > 0; i -= 1) {
+    if (firstNum % i === 0 && secondNum % i === 0) {
+      result = i;
       break;
     }
   }
-
-  return greatestCommonDivisor;
+  return result;
 };
 
 const generateRound = () => {
