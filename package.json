@@ -1,6 +1,6 @@
 {
   "name": "@hexlet/code",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "my first project",
   "main": "games/brain-games.js",
   "type": "module",
@@ -9,7 +9,8 @@
     "brain-even": "games/brain-even.js",
     "brain-calc": "games/brain-calc.js",
     "brain-gcd": "games/brain-gcd.js",
-    "brain-progression": "games/brain-progression.js"
+    "brain-progression": "games/brain-progression.js",
+    "brain-prime": "games/brain-prime.js"
   },
   "scripts": {
     "test": "test"
