@@ -10,11 +10,12 @@ export default async (question, generateRound) => {
   console.log('Welcome to the Brain Games!');
 
   const userName = await getName();
+  const numberOfRounds = 3;
 
   console.log(`Hello, ${userName}!`);
   console.log(question);
 
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < numberOfRounds; i += 1) {
     const round = generateRound();
 
     console.log(`Question: ${round.question}`);
