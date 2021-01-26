@@ -1,7 +1,5 @@
-#!/usr/bin/env node
-
 import _ from 'lodash';
-import playBrainGame from '../src/index.js';
+import playBrainGame from '../index.js';
 
 const question = 'What number is missing in the progression?';
 
@@ -30,4 +28,4 @@ const generateRound = () => {
   return round;
 };
 
-playBrainGame(question, generateRound);
+export default () => playBrainGame(question, generateRound);

@@ -1,7 +1,5 @@
-#!/usr/bin/env node
-
 import _ from 'lodash';
-import playBrainGame from '../src/index.js';
+import playBrainGame from '../index.js';
 
 const question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -29,4 +27,4 @@ const generateRound = () => {
   return round;
 };
 
-playBrainGame(question, generateRound);
+export default () => playBrainGame(question, generateRound);

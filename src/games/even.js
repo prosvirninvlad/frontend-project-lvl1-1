@@ -1,7 +1,5 @@
-#!/usr/bin/env node
-
 import _ from 'lodash';
-import playBrainGame from '../src/index.js';
+import playBrainGame from '../index.js';
 
 const question = 'Answer "yes" if the number is even, otherwise answer "no".';
 
@@ -16,4 +14,4 @@ const generateRound = () => {
   return round;
 };
 
-playBrainGame(question, generateRound);
+export default () => playBrainGame(question, generateRound);

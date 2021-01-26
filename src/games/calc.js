@@ -1,7 +1,5 @@
-#!/usr/bin/env node
-
 import _ from 'lodash';
-import playBrainGame from '../src/index.js';
+import playBrainGame from '../index.js';
 
 const question = 'What is the result of the expression?';
 
@@ -36,4 +34,4 @@ const generateRound = () => {
   return round;
 };
 
-playBrainGame(question, generateRound);
+export default () => playBrainGame(question, generateRound);
