@@ -1,9 +1,12 @@
-import promptly from 'promptly';
+import createStdio from './stdio/index.js';
 
 export default async () => {
-  console.log('Welcome to the Brain Games!');
-
-  const name = await promptly.prompt('May I have your name? ', { default: 'Incognito' });
-
-  console.log(`Hello, ${name}!`);
+  const stdio = createStdio();
+  try {
+    stdio.print('Welcome to the Brain Games!');
+    const name = await stdio.query('May I have your name? ');
+    stdio.print(`Hello, ${name}!`);
+  } finally {
+    stdio.close();
+  }
 };

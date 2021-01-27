@@ -1,36 +1,36 @@
-import promptly from 'promptly';
-
-const getName = async () => {
-  const userName = await promptly.prompt('May I have your name? ', { default: 'Incognito' });
-
-  return userName;
-};
+import createStdio from './stdio/index.js';
 
 export default async (question, generateRound) => {
-  console.log('Welcome to the Brain Games!');
+  const stdio = createStdio();
 
-  const userName = await getName();
-  const numberOfRounds = 3;
+  try {
+    stdio.print('Welcome to the Brain Games!');
 
-  console.log(`Hello, ${userName}!`);
-  console.log(question);
+    const userName = await stdio.query('May I have your name? ');
+    const numberOfRounds = 3;
 
-  for (let i = 0; i < numberOfRounds; i += 1) {
-    const round = generateRound();
+    stdio.print(`Hello, ${userName}!`);
+    stdio.print(question);
 
-    console.log(`Question: ${round.question}`);
+    for (let i = 0; i < numberOfRounds; i += 1) {
+      const round = generateRound();
 
-    const answer = await promptly.prompt('Your answer: ');
+      stdio.print(`Question: ${round.question}`);
 
-    if (answer === round.correctAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${round.correctAnswer}'.`);
-      console.log(`Let's try again, ${userName}!`);
+      const answer = await stdio.query('Your answer: ');
 
-      return;
+      if (answer === round.correctAnswer) {
+        stdio.print('Correct!');
+      } else {
+        stdio.print(`'${answer}' is wrong answer ;(. Correct answer was '${round.correctAnswer}'.`);
+        stdio.print(`Let's try again, ${userName}!`);
+
+        return;
+      }
     }
-  }
 
-  console.log(`Congratulations, ${userName}!`);
+    stdio.print(`Congratulations, ${userName}!`);
+  } finally {
+    stdio.close();
+  }
 };
