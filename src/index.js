@@ -1,35 +1,35 @@
+import createCli from './cli/index.js';
 import createStdio from './stdio/index.js';
 
 export default async (question, generateRound) => {
   const stdio = createStdio();
+  const cli = createCli(stdio);
 
   try {
-    stdio.print('Welcome to the Brain Games!');
+    cli.printGameName();
 
-    const userName = await stdio.query('May I have your name? ');
+    const username = await cli.askPlayerName();
     const numberOfRounds = 3;
 
-    stdio.print(`Hello, ${userName}!`);
-    stdio.print(question);
+    cli.greetPlayer(username);
+    cli.printGameRule(question);
 
     for (let i = 0; i < numberOfRounds; i += 1) {
       const round = generateRound();
 
-      stdio.print(`Question: ${round.question}`);
+      cli.printRoundQuestion(round.question);
 
-      const answer = await stdio.query('Your answer: ');
+      const answer = await cli.answerPlayer();
 
-      if (answer === round.correctAnswer) {
-        stdio.print('Correct!');
-      } else {
-        stdio.print(`'${answer}' is wrong answer ;(. Correct answer was '${round.correctAnswer}'.`);
-        stdio.print(`Let's try again, ${userName}!`);
-
+      if (answer !== round.correctAnswer) {
+        cli.reportLoss(username, answer, round.correctAnswer);
         return;
       }
+
+      cli.reportWin();
     }
 
-    stdio.print(`Congratulations, ${userName}!`);
+    cli.congratulatePlayer(username);
   } finally {
     stdio.close();
   }
