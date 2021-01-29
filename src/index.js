@@ -22,14 +22,13 @@ export default async (question, generateRound) => {
 
     const answer = await promptly.prompt('Your answer: ');
 
-    if (answer === round.correctAnswer) {
-      console.log('Correct!');
-    } else {
+    if (answer !== round.correctAnswer) {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${round.correctAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
 
       return;
     }
+    console.log('Correct!');
   }
 
   console.log(`Congratulations, ${userName}!`);

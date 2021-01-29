@@ -4,23 +4,21 @@ import playBrainGame from '../index.js';
 const question = 'Find the greatest common divisor of given numbers.';
 
 const getGreatestCommonDivisor = (firstNum, secondNum) => {
-  let result = 1;
-
   if (firstNum === 0 || secondNum === 0) {
-    return result;
+    return 1;
   }
 
-  const firstNumAbs = Math.abs(firstNum);
-  const secondNumAbs = Math.abs(secondNum);
-  const greatestCommonDivisor = Math.min(firstNumAbs, secondNumAbs);
+  let a = Math.max(Math.abs(firstNum), Math.abs(secondNum));
+  let b = Math.min(Math.abs(firstNum), Math.abs(secondNum));
+  let remainder = a % b;
 
-  for (let i = greatestCommonDivisor; i > 0; i -= 1) {
-    if (firstNum % i === 0 && secondNum % i === 0) {
-      result = i;
-      break;
-    }
+  while (remainder !== 0) {
+    a = b;
+    b = remainder;
+    remainder = a % b;
   }
-  return result;
+
+  return b;
 };
 
 const generateRound = () => {
